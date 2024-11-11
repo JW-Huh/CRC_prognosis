@@ -1,2 +1,4 @@
 # CRC_prognosis
-CRC metagenomics
+
+CRC metagenomic analysis to associate tumor regression grade (TRG) with gut microbiota
+
