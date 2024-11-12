@@ -12,7 +12,8 @@ options(
   
 ) 
 
-setwd(dir = "D:/2-Research/2-CRC metagenomics/") 
+# setwd(dir = "D:/2-연구/2-CRC metagenomics/")  # Office
+# setwd(dir = "D:/2-연구/2-CRC metagenomics/")  # Home
 
 
 # install.packages("tidyverse")
@@ -78,3 +79,19 @@ merged_data <- Reduce(function(x, y) merge(x, y,
                       data_list); merged_data[is.na(merged_data)] <- 0
 
 write.csv(merged_data, file = "genus.csv", row.names = FALSE)
+
+
+
+# 4. Family
+
+file_paths <- list.files(path = "family/", pattern = "\\.tsv$", 
+                         full.names = TRUE)
+
+data_list <- lapply(file_paths, read_tsv)
+
+merged_data <- Reduce(function(x, y) merge(x, y,
+                                           by = "clade_name", 
+                                           all = TRUE), 
+                      data_list); merged_data[is.na(merged_data)] <- 0
+
+write.csv(merged_data, file = "family.csv", row.names = FALSE)
